@@ -12,6 +12,10 @@ public class Controller {
     public ComboBox combo1;
     public ComboBox combo2;
     List<String> countries;
+
+    public String comboValue(){
+        return (String) combo1.getValue();
+    }
     public Controller() throws SQLException, ClassNotFoundException {
         //Databases database = new Databases();
        // countries = database.getCountries();
@@ -22,5 +26,14 @@ public class Controller {
     public void getCountries(Event event) {
         Databases database = new Databases();
         combo1.getItems().setAll(database.getCountries());
+    }
+
+    public void getCites(Event event) {
+        Databases database = new Databases();
+     combo2.getItems().setAll(database.getCities(comboValue()));
+    }
+
+    public void isVisibe(ActionEvent actionEvent) {
+        combo2.setVisible(true);
     }
 }

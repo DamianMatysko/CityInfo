@@ -4,6 +4,25 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class Databases {
+    public List getCities(String countryName) {
+        try {
+            Connection con = getConnection();
+            PreparedStatement pstm = con.prepareStatement(" SELECT city.Name FROM city join country on country.Code=city.CountryCode WHERE country.name LIKE ?");
+            pstm.setString(1, countryName);
+            ResultSet rs = pstm.executeQuery();
+            String city;
+            List <String> list= new ArrayList<>();
+            while (rs.next()){
+                city=rs.getString("name");
+                // System.out.println(country);
+                list.add(city);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public List getCountries() {
         try {
             Connection con = getConnection();
