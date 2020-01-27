@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="289.0" prefWidth="475.0">
+         <children>
+            <ComboBox fx:id="combo1" layoutX="14.0" layoutY="45.0" onShowing="#getCountries" prefWidth="150.0" />
+            <Label layoutX="51.0" layoutY="28.0" text="Select Country" />
+            <ComboBox fx:id="combo2" layoutX="172.0" layoutY="45.0" prefWidth="150.0" />
+         </children></Pane>
+   </children>
+</GridPane>
