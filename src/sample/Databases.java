@@ -4,6 +4,33 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class Databases {
+    public String getCityInfo(String cityName) {
+        try {
+            Connection con = getConnection();
+            PreparedStatement pstm = con.prepareStatement(" select District, json_extract(Info ,'$.Population') AS Info from city where city.Name LIKE ?");
+            pstm.setString(1, cityName);
+            ResultSet rs = pstm.executeQuery();
+            String city = null;
+            String pop = null;
+            //List <String> list= new ArrayList<>();
+            while (rs.next()){
+                city=rs.getString("District");
+                pop=rs.getString("Info");
+                System.out.println(pop);
+                // System.out.println(country);
+                //list.add(city);
+            }
+
+            pstm.close();
+            rs.close();
+            return pop;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public List getCities(String countryName) {
         try {
             Connection con = getConnection();

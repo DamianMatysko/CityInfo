@@ -16,6 +16,8 @@
             <ComboBox fx:id="combo1" layoutX="14.0" layoutY="45.0" onAction="#isVisibe" onShowing="#getCountries" prefWidth="150.0" />
             <Label layoutX="51.0" layoutY="28.0" text="Select Country" />
             <ComboBox fx:id="combo2" layoutX="172.0" layoutY="45.0" onShowing="#getCites" prefWidth="150.0" visible="false" />
+            <Button fx:id="findInfo" layoutX="388.0" layoutY="45.0" mnemonicParsing="false" onAction="#findInformation" text="Show info" />
+            <Label fx:id="cityInfo" layoutX="194.0" layoutY="180.0" prefHeight="25.0" prefWidth="128.0" text="City INFO" />
          </children></Pane>
    </children>
 </GridPane>
