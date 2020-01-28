@@ -4,6 +4,30 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class Databases {
+    public List getCitiesIntoObject(String countryName) {
+        try {
+            Connection con = getConnection();
+            PreparedStatement pstm = con.prepareStatement(" SELECT city.Name, city.CountryCode, country.Code2, json_extract(Info, '$.Population') AS Info, country.Name FROM city JOIN country ON country.Code = city.CountryCode WHERE country.Name LIKE ?");
+            pstm.setString(1, countryName);
+            ResultSet rs = pstm.executeQuery();
+
+
+            List<City> list = new ArrayList<>();
+            while (rs.next()) {
+                String name = rs.getString("city.Name");
+                String code2 = rs.getString("city.CountryCode");
+                String code3 = rs.getString("country.Code2");
+                int population = rs.getInt("Info");
+                String country = rs.getString("country.Name");
+                City newCity = new City(name, population, code3, code2, country);
+                list.add(newCity);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public String getCityInfo(String cityName) {
         try {
             Connection con = getConnection();
@@ -21,7 +45,7 @@ public class Databases {
                 //list.add(city);
             }
 
-            pstm.close();
+            pstm.close();   
             rs.close();
             return pop;
         } catch (Exception e) {

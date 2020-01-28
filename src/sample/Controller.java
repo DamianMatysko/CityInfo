@@ -6,26 +6,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
-import java.awt.*;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Controller {
     public ComboBox combo1;
     public ComboBox combo2;
-    public Label cityInfo;
+    public Label populationInfo;
     public Button findInfo;
+    public Label districInfo;
+    public Label weatherInfo;
+    private List<City> cities;
     List<String> countries;
 
-    public String countryComboValue(){
+    public String countryComboValue() {
         return (String) combo1.getValue();
     }
-    public String cityComboValue(){
+
+    public String cityComboValue() {
         return (String) combo2.getValue();
     }
+
     public Controller() throws SQLException, ClassNotFoundException {
         //Databases database = new Databases();
-       // countries = database.getCountries();
+        // countries = database.getCountries();
 
     }
 
@@ -35,19 +40,67 @@ public class Controller {
         combo1.getItems().setAll(database.getCountries());
     }
 
+
+    public void getCites(Event event) {
+        String country = null;
+        country = countryComboValue();
+        List<City> cities;
+        if (country != null) {
+            Databases database = new Databases();
+            cities = database.getCitiesIntoObject(country);
+            combo2.getItems().clear();
+            for (City s : cities) {
+                System.out.println(s.getName());
+                combo2.getItems().add(s.getName());
+            }
+            combo2.setDisable(false);
+        }
+    }
+/*
     public void getCites(Event event) {
         Databases database = new Databases();
-     combo2.getItems().setAll(database.getCities(countryComboValue()));
+        combo2.getItems().setAll(database.getCities(countryComboValue()));
 
     }
+
+ */
 
     public void isVisibe(ActionEvent actionEvent) {
         combo2.setVisible(true);
     }
 
+    /*
     public void findInformation(ActionEvent actionEvent) {
         Databases database = new Databases();
         //cityInfo.setVisible(true);
-        cityInfo.setText(database.getCityInfo(cityComboValue()));
+        populationInfo.setText(database.getCityInfo(cityComboValue()));
+
+    }
+
+     */
+/*
+    public String convertToString(int number){
+        String txtNumber= String.valueOf(number);
+        String pattern = "###,###,###";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        return decimalFormat.format(txtNumber);
+
+    }
+
+ */
+    public void findInformation(ActionEvent actionEvent) {
+        String cityName = cityComboValue();
+        City city = null;
+        for (City c : cities){
+            if (c.getName().equals(cityName)){
+                city = c;
+                break;
+            }
+        }
+        if (city == null)
+            return;
+
+        //populationInfo.setText("Population: "+convertToString(city.getPopulatin()));
+        districInfo.setText("Distric: "+city.getCode2());
     }
 }
