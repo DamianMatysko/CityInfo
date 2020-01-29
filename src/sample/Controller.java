@@ -44,7 +44,7 @@ public class Controller {
     public void getCites(Event event) {
         String country = null;
         country = countryComboValue();
-        List<City> cities;
+       // List<City> cities;
         if (country != null) {
             Databases database = new Databases();
             cities = database.getCitiesIntoObject(country);
@@ -56,7 +56,7 @@ public class Controller {
             combo2.setDisable(false);
         }
     }
-/*
+/* old methoed
     public void getCites(Event event) {
         Databases database = new Databases();
         combo2.getItems().setAll(database.getCities(countryComboValue()));
@@ -69,7 +69,7 @@ public class Controller {
         combo2.setVisible(true);
     }
 
-    /*
+    /* old methoed
     public void findInformation(ActionEvent actionEvent) {
         Databases database = new Databases();
         //cityInfo.setVisible(true);
@@ -78,16 +78,20 @@ public class Controller {
     }
 
      */
-/*
-    public String convertToString(int number){
-        String txtNumber= String.valueOf(number);
-        String pattern = "###,###,###";
-        DecimalFormat decimalFormat = new DecimalFormat(pattern);
-        return decimalFormat.format(txtNumber);
 
+    public String convertToString(int number){
+        //String txtNumber= String.valueOf(number);
+        //.replace("", " ").trim()
+        String pattern = "###,###.###";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        String txtNumber = decimalFormat.format(number);
+
+
+
+        return txtNumber;
     }
 
- */
+
     public void findInformation(ActionEvent actionEvent) {
         String cityName = cityComboValue();
         City city = null;
@@ -100,7 +104,7 @@ public class Controller {
         if (city == null)
             return;
 
-        //populationInfo.setText("Population: "+convertToString(city.getPopulatin()));
+        populationInfo.setText("Population: "+convertToString(city.getPopulatin()));
         districInfo.setText("Distric: "+city.getCode2());
     }
 }
