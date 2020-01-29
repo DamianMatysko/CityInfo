@@ -106,5 +106,7 @@ public class Controller {
 
         populationInfo.setText("Population: "+convertToString(city.getPopulatin()));
         districInfo.setText("Distric: "+city.getCode2());
+        WebWeather webWeather = new WebWeather();
+        webWeather.getData("Košice", "SK");
     }
 }
