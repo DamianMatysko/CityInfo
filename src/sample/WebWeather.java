@@ -37,14 +37,25 @@ public class WebWeather {
                 int humidity=jsonObject.getJSONObject("main").getInt("humidity");
                 double lon=jsonObject.getJSONObject("coord").getDouble("lon");
                 double lat= jsonObject.getJSONObject("coord").getDouble("lat");
-
                 weather =new Weather(name, country, temp, humidity, lon, lat);
-                //weather.setTemp(temp);
-               // weather.setHumidity(humidity);
 
-                //System.out.println(weather.getTemp());
-                System.out.println(temp);
-                System.out.println(humidity);
+                long sunrise= jsonObject.getJSONObject("sys").getLong("sunrise");
+                long sunset= jsonObject.getJSONObject("sys").getLong("sunset");
+                long visibility=jsonObject.getLong("visibility");
+
+                System.out.println(sunrise+" "+sunset+" "+visibility);
+                /*
+                Date now = new Date(unix1000);
+                Date now_x = new Date(unix_11000);
+                String riseTime = sdf.format(now_x);
+                String setTime = sdf.format(now);
+                System.out.println(riseTime);
+                System.out.println(setTime);
+                 */
+
+
+
+
                 return weather;
             }
 

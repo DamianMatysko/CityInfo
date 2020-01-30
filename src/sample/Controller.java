@@ -119,10 +119,12 @@ public class Controller {
         Weather weather = new WebWeather().getData(city.getName(), city.getCode2());
         name.setText("Name: "+String.valueOf(weather.getName()));
         country.setText("Country: "+String.valueOf(weather.getCountry()));
-        temperature.setText("Temperature: "+ String.valueOf(weather.getTemp()));
-        humidity.setText("Humidity: "+convertToString(weather.getHumidity()));
+        temperature.setText("Temperature: "+ String.valueOf(weather.getTemp())+"°C");
+        humidity.setText("Humidity: "+convertToString(weather.getHumidity())+"%");
         lon.setText("Lon: "+String.valueOf(weather.getLon()));
         lat.setText("Lat: "+String.valueOf(weather.getLat()));
+
+
 
     }
 }
