@@ -16,9 +16,13 @@ public class Controller {
     public Label populationInfo;
     public Button findInfo;
     public Label districInfo;
-    public Label weatherInfo;
+
     public Label temperature;
     public Label humidity;
+    public Label name;
+    public Label country;
+    public Label lon;
+    public Label lat;
     private List<City> cities;
     List<String> countries;
 
@@ -113,8 +117,12 @@ public class Controller {
 
         //Weather weather = new WebWeather().getData("Košice", "SK");
         Weather weather = new WebWeather().getData(city.getName(), city.getCode2());
+        name.setText("Name: "+String.valueOf(weather.getName()));
+        country.setText("Country: "+String.valueOf(weather.getCountry()));
         temperature.setText("Temperature: "+ String.valueOf(weather.getTemp()));
         humidity.setText("Humidity: "+convertToString(weather.getHumidity()));
+        lon.setText("Lon: "+String.valueOf(weather.getLon()));
+        lat.setText("Lat: "+String.valueOf(weather.getLat()));
 
     }
 }

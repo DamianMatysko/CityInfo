@@ -17,16 +17,16 @@
             <Label layoutX="51.0" layoutY="28.0" text="Select Country" />
             <ComboBox fx:id="combo2" layoutX="172.0" layoutY="45.0" onShowing="#getCites" prefWidth="150.0" visible="false" />
             <Button fx:id="findInfo" layoutX="388.0" layoutY="45.0" mnemonicParsing="false" onAction="#findInformation" text="Show info" />
-            <Pane layoutX="28.0" layoutY="156.0" prefHeight="120.0" prefWidth="421.0">
+            <Pane layoutX="27.0" layoutY="156.0" prefHeight="120.0" prefWidth="421.0">
                <children>
-                  <Label fx:id="populationInfo" layoutX="24.0" layoutY="27.0" prefHeight="25.0" prefWidth="128.0" text="Population:" />
-                  <Label fx:id="districInfo" layoutX="24.0" layoutY="60.0" text="District:" />
-                  <Label fx:id="weatherInfo" layoutX="24.0" layoutY="89.0" text="Weather:" />
-                  <Label fx:id="temperature" layoutX="310.0" layoutY="19.0" text="Temperature:" />
-                  <Label fx:id="humidity" layoutX="310.0" layoutY="44.0" text="Humidity: " />
-                  <Label layoutX="310.0" layoutY="69.0" text="Label" />
-                  <Label layoutX="310.0" layoutY="89.0" text="Label" />
-                  <Label layoutX="24.0" layoutY="11.0" text="Label" />
+                  <Label fx:id="populationInfo" layoutX="14.0" layoutY="2.0" prefHeight="25.0" prefWidth="128.0" text="Population:" />
+                  <Label fx:id="districInfo" layoutX="14.0" layoutY="44.0" text="District:" />
+                  <Label fx:id="lat" layoutX="255.0" layoutY="90.0" text="Lat:" />
+                  <Label fx:id="temperature" layoutX="255.0" layoutY="19.0" text="Temperature:" />
+                  <Label fx:id="humidity" layoutX="255.0" layoutY="44.0" text="Humidity: " />
+                  <Label fx:id="name" layoutX="14.0" layoutY="65.0" text="Name:" />
+                  <Label fx:id="country" layoutX="14.0" layoutY="90.0" text="Country:" />
+                  <Label fx:id="lon" layoutX="255.0" layoutY="65.0" text="Lon:" />
                </children>
             </Pane>
          </children></Pane>
