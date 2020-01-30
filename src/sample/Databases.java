@@ -15,11 +15,11 @@ public class Databases {
             List<City> list = new ArrayList<>();
             while (rs.next()) {
                 String name = rs.getString("city.Name");
-                String code2 = rs.getString("city.CountryCode");
-                String code3 = rs.getString("country.Code2");
+                String code = rs.getString("city.CountryCode");
+                String code2 = rs.getString("country.Code2");
                 int population = rs.getInt("Info");
                 String country = rs.getString("country.Name");
-                City newCity = new City(name, population, code3, code2, country);
+                City newCity = new City(name, population, code2, code, country);
                 list.add(newCity);
             }
             return list;

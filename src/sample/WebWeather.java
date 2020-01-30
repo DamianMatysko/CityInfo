@@ -1,9 +1,7 @@
 package sample;
 
-import com.mysql.cj.x.protobuf.MysqlxDatatypes;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +19,7 @@ public class WebWeather {
     public Weather getData(String city,String code2){
         Weather weather=null;
         try {
-            URL url = new URL("https://samples.openweathermap.org/data/2.5/weather?q="+city+",uk&appid=b6907d289e10d714a6e88b30761fae22");
+            URL url = new URL("https://api.openweathermap.org/data/2.5/weather?q="+city+","+code2+"&units=metric&appid=db07310c3c4774c0844ad3c090be3be3");
             HttpURLConnection connection=(HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
@@ -32,13 +30,17 @@ public class WebWeather {
                 String output=br.readLine();
                 System.out.println(output);
 
-                JSONParser parser = new JSONParser();
-                JSONObject json = (JSONObject) parser.parse(output);
+                JSONObject jsonObject = new JSONObject(output);
+                String name=jsonObject.getString("name");
+                String country = jsonObject.getJSONObject("sys").getString("country");
+                double temp=jsonObject.getJSONObject("main").getDouble("temp");
+                int humidity=jsonObject.getJSONObject("main").getInt("humidity");
+                double lon=jsonObject.getJSONObject("coord").getDouble("lon");
+                double lat= jsonObject.getJSONObject("coord").getDouble("lat");
 
-                JSONObject main = (JSONObject) json.get("main");
-                double temp = (double) main.get("temp");
-                //Integer humidity = (Integer) main.get("humidity");
+                weather =new Weather(name, country, temp, humidity, lon, lat);
                 //weather.setTemp(temp);
+               // weather.setHumidity(humidity);
 
                 //System.out.println(weather.getTemp());
                 System.out.println(temp);
@@ -53,7 +55,7 @@ public class WebWeather {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return weather;

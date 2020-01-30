@@ -22,6 +22,11 @@
                   <Label fx:id="populationInfo" layoutX="24.0" layoutY="27.0" prefHeight="25.0" prefWidth="128.0" text="Population:" />
                   <Label fx:id="districInfo" layoutX="24.0" layoutY="60.0" text="District:" />
                   <Label fx:id="weatherInfo" layoutX="24.0" layoutY="89.0" text="Weather:" />
+                  <Label fx:id="temperature" layoutX="310.0" layoutY="19.0" text="Temperature:" />
+                  <Label fx:id="humidity" layoutX="310.0" layoutY="44.0" text="Humidity: " />
+                  <Label layoutX="310.0" layoutY="69.0" text="Label" />
+                  <Label layoutX="310.0" layoutY="89.0" text="Label" />
+                  <Label layoutX="24.0" layoutY="11.0" text="Label" />
                </children>
             </Pane>
          </children></Pane>
