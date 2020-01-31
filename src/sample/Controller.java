@@ -7,10 +7,14 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Scanner;
 
 public class Controller {
     public ComboBox combo1;
@@ -31,6 +35,8 @@ public class Controller {
     public Label sunrize;
     private List<City> cities;
     List<String> countries;
+    //URL url= null;
+    String url= null;
 
     public String countryComboValue() {
         return (String) combo1.getValue();
@@ -105,7 +111,7 @@ public class Controller {
     }
 
 
-    public void findInformation(ActionEvent actionEvent) {
+    public void findInformation(ActionEvent actionEvent) throws MalformedURLException {
         String cityName = cityComboValue();
         City city = null;
         for (City c : cities){
@@ -137,6 +143,7 @@ public class Controller {
         sunset.setText("Sunset: "+String.valueOf(sdf.format(weather.getSunset())));
         sunrize.setText("Sunrize: "+String.valueOf(sdf.format(weather.getSunrise())));
 
+        url="http://www.google.com/maps/place/"+String.valueOf(weather.getLat())+","+String.valueOf(weather.getLon());
 
 
     }
@@ -151,5 +158,12 @@ public class Controller {
             sunset.setVisible(false);
             sunrize.setVisible(false);
         }
+    }
+
+    public void locateCity(ActionEvent actionEvent) throws IOException {
+        //String pokus="http://www.google.com/maps/place/0,0";
+        //String out = new Scanner(url.openStream(), "UTF-8").useDelimiter("\\A").next();
+
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
     }
 }

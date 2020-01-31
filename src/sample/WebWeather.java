@@ -10,9 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class WebWeather {
     public static Map<String, Object> jsonToMap(String str) {
@@ -41,26 +43,14 @@ public class WebWeather {
                 double lon = jsonObject.getJSONObject("coord").getDouble("lon");
                 double lat = jsonObject.getJSONObject("coord").getDouble("lat");
 
-                //SimpleDateFormat sdf= new SimpleDateFormat("HH:mm");
+
                 long sunrise = jsonObject.getJSONObject("sys").getLong("sunrise");
                 long sunset = jsonObject.getJSONObject("sys").getLong("sunset");
-                Date dateSunrise = new Date(sunset);
-                Date dateSunset = new Date(sunrise);
+                Date dateSunrise = new Date(sunset*1000);
+                Date dateSunset = new Date(sunrise*1000);
                 double visibility = jsonObject.getDouble("visibility");
 
-
                 weather = new Weather(name, country, temp, humidity, lon, lat, dateSunrise, dateSunset, visibility);
-                //System.out.println(sdf.format(sunrise) + " " + sunset + " " + visibility);
-                /*
-                Date now = new Date(unix1000);
-                Date now_x = new Date(unix_11000);
-                String riseTime = sdf.format(now_x);
-                String setTime = sdf.format(now);
-                System.out.println(riseTime);
-                System.out.println(setTime);
-                 */
-
-
                 return weather;
             }
 

@@ -27,14 +27,15 @@
                   <Label fx:id="name" layoutX="14.0" layoutY="65.0" text="Name:" />
                   <Label fx:id="country" layoutX="14.0" layoutY="90.0" text="Country:" />
                   <Label fx:id="lon" layoutX="255.0" layoutY="65.0" text="Lon:" />
+                  <Button layoutX="350.0" layoutY="78.0" mnemonicParsing="false" onAction="#locateCity" text="LocateCity" />
                </children>
             </Pane>
             <CheckBox fx:id="moreInfo" layoutX="375.0" layoutY="102.0" mnemonicParsing="false" onAction="#showMoreInfo" text="More info" />
             <Pane layoutX="14.0" layoutY="94.0" prefHeight="55.0" prefWidth="353.0">
                <children>
-                  <Label fx:id="visibility" layoutX="14.0" layoutY="6.0" text="Visibility:" />
-                  <Label fx:id="sunset" layoutX="139.0" layoutY="6.0" text="Sunset:" />
-                  <Label fx:id="sunrize" layoutX="242.0" layoutY="6.0" text="Sunrize:" />
+                  <Label fx:id="visibility" layoutX="14.0" layoutY="6.0" text="Visibility:" visible="false" />
+                  <Label fx:id="sunset" layoutX="139.0" layoutY="6.0" text="Sunset:" visible="false" />
+                  <Label fx:id="sunrize" layoutX="242.0" layoutY="6.0" text="Sunrize:" visible="false" />
                </children></Pane>
          </children></Pane>
    </children>
