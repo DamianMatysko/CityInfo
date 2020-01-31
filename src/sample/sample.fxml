@@ -29,7 +29,13 @@
                   <Label fx:id="lon" layoutX="255.0" layoutY="65.0" text="Lon:" />
                </children>
             </Pane>
-            <CheckBox fx:id="moreInfo" layoutX="375.0" layoutY="102.0" mnemonicParsing="false" text="More info" />
+            <CheckBox fx:id="moreInfo" layoutX="375.0" layoutY="102.0" mnemonicParsing="false" onAction="#showMoreInfo" text="More info" />
+            <Pane layoutX="14.0" layoutY="94.0" prefHeight="55.0" prefWidth="353.0">
+               <children>
+                  <Label fx:id="visibility" layoutX="14.0" layoutY="6.0" text="Visibility:" />
+                  <Label fx:id="sunset" layoutX="139.0" layoutY="6.0" text="Sunset:" />
+                  <Label fx:id="sunrize" layoutX="242.0" layoutY="6.0" text="Sunrize:" />
+               </children></Pane>
          </children></Pane>
    </children>
 </GridPane>

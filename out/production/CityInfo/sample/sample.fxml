@@ -29,7 +29,7 @@
                   <Label fx:id="lon" layoutX="255.0" layoutY="65.0" text="Lon:" />
                </children>
             </Pane>
-            <CheckBox fx:id="moreInfo" layoutX="375.0" layoutY="102.0" mnemonicParsing="false" text="More info" />
+            <CheckBox fx:id="moreInfo" layoutX="375.0" layoutY="102.0" mnemonicParsing="false" onAction="#showMoreInfo" text="More info" />
          </children></Pane>
    </children>
 </GridPane>

@@ -3,11 +3,13 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class Controller {
@@ -23,6 +25,10 @@ public class Controller {
     public Label country;
     public Label lon;
     public Label lat;
+    public CheckBox moreInfo;
+    public Label visibility;
+    public Label sunset;
+    public Label sunrize;
     private List<City> cities;
     List<String> countries;
 
@@ -123,8 +129,28 @@ public class Controller {
         humidity.setText("Humidity: "+convertToString(weather.getHumidity())+"%");
         lon.setText("Lon: "+String.valueOf(weather.getLon()));
         lat.setText("Lat: "+String.valueOf(weather.getLat()));
+        visibility.setVisible(false);
+        sunset.setVisible(false);
+        sunrize.setVisible(false);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        visibility.setText("");
+        sunset.setText("");
+        sunrize.setText("");
 
 
 
+    }
+
+    public void showMoreInfo(ActionEvent actionEvent) {
+        if (moreInfo.isSelected()){
+            visibility.setVisible(true);
+            sunrize.setVisible(true);
+            sunset.setVisible(true);
+        }else {
+            visibility.setVisible(false);
+            sunset.setVisible(false);
+            sunrize.setVisible(false);
+        }
     }
 }
