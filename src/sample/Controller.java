@@ -44,6 +44,7 @@ public class Controller {
         //Databases database = new Databases();
         // countries = database.getCountries();
 
+
     }
 
 
@@ -129,14 +130,12 @@ public class Controller {
         humidity.setText("Humidity: "+convertToString(weather.getHumidity())+"%");
         lon.setText("Lon: "+String.valueOf(weather.getLon()));
         lat.setText("Lat: "+String.valueOf(weather.getLat()));
-        visibility.setVisible(false);
-        sunset.setVisible(false);
-        sunrize.setVisible(false);
+
 
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        visibility.setText("");
-        sunset.setText("");
-        sunrize.setText("");
+        visibility.setText("Visibility: "+String.valueOf(weather.getVisibility()));
+        sunset.setText("Sunset: "+String.valueOf(sdf.format(weather.getSunset())));
+        sunrize.setText("Sunrize: "+String.valueOf(sdf.format(weather.getSunrise())));
 
 
 
