@@ -10,11 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class WebWeather {
     public static Map<String, Object> jsonToMap(String str) {
@@ -52,8 +49,7 @@ public class WebWeather {
 
                 weather = new Weather(name, country, temp, humidity, lon, lat, dateSunrise, dateSunset, visibility);
                 return weather;
-            }
-
+            } else throw new NoSuchExcepton("There is no weather for this city");
 
         } catch (ProtocolException e) {
             e.printStackTrace();
@@ -62,6 +58,10 @@ public class WebWeather {
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (NoSuchExcepton noSuchExcepton) {
+            noSuchExcepton.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
         return weather;
